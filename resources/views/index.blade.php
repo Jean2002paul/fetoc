@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero avec Carrousel Pleine Page -->
     <section class="relative w-full h-screen overflow-hidden">
-        <div x-data="{ activeSlide: 1, slides: [
+        <div x-data="{ heroActiveSlide: 1, heroSlides: [
             {
                 src: '{{ asset('assets/19.jpg') }}',
                 alt: 'Compétition de Canoë-Kayak',
@@ -30,11 +30,11 @@
                 title: 'Compétitions Nationales',
                 subtitle: 'Des événements sportifs de haut niveau'
             }
-        ]}" x-init="setInterval(() => { activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1 }, 5000)" class="relative h-full">
+        ]}" x-init="setInterval(() => { heroActiveSlide = heroActiveSlide === heroSlides.length ? 1 : heroActiveSlide + 1 }, 5000)" class="relative h-full">
 
             <!-- Slides -->
-            <template x-for="(slide, index) in slides" :key="index">
-                <div class="absolute inset-0 transition-opacity duration-1000" x-show="activeSlide === index + 1" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100">
+            <template x-for="(slide, index) in heroSlides" :key="index">
+                <div class="absolute inset-0 transition-opacity duration-1000" x-show="heroActiveSlide === index + 1" x-transition:enter="opacity-0" x-transition:enter-end="opacity-100">
                     <img :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
                     <!-- Overlay sombre pour la lisibilité du texte -->
                     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -55,8 +55,8 @@
             </div>
 
             <!-- Titre et sous-titre spécifiques à chaque slide (affichés en dessous du contenu général) -->
-            <template x-for="(slide, index) in slides" :key="index">
-                <div x-show="activeSlide === index + 1" class="absolute bottom-20 left-0 right-0 text-white text-center p-6 z-10 transition-opacity duration-1000" x-transition:enter="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
+            <template x-for="(slide, index) in heroSlides" :key="index">
+                <div x-show="heroActiveSlide === index + 1" class="absolute bottom-20 left-0 right-0 text-white text-center p-6 z-10 transition-opacity duration-1000" x-transition:enter="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
                     <h2 class="text-3xl sm:text-4xl font-bold mb-2 drop-shadow-lg" x-text="slide.title"></h2>
                     <p class="text-lg sm:text-xl drop-shadow-md" x-text="slide.subtitle"></p>
                 </div>
@@ -65,8 +65,8 @@
 
             <!-- Navigation dots -->
             <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button @click="activeSlide = index + 1" :class="{'bg-white': activeSlide === index + 1, 'bg-gray-500': activeSlide !== index + 1}" class="w-3 h-3 rounded-full shadow-md"></button>
+                <template x-for="(slide, index) in heroSlides" :key="index">
+                    <button @click="heroActiveSlide = index + 1" :class="{'bg-white': heroActiveSlide === index + 1, 'bg-gray-500': heroActiveSlide !== index + 1}" class="w-3 h-3 rounded-full shadow-md"></button>
                 </template>
             </div>
         </div>

@@ -43,32 +43,55 @@
             <ul class="hidden md:flex space-x-8 text-base font-semibold">
                 <li><a href="/" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Accueil</a></li>
                 
-                <!-- Menu déroulant -->
-                <li class="relative group" x-data="{ open: false }">
-                    <button @click="open = !open" @click.away="open = false" class="flex items-center gap-2 hover:text-primary focus:outline-none transition-colors duration-300 hover:scale-105 transform">
-                        La Fédération <i class="fas fa-chevron-down text-sm transition-transform duration-300" :class="{ 'rotate-180': open }"></i>
-                    </button>
-                    <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95 translate-y-2" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-95 translate-y-2" class="absolute bg-white mt-3 shadow-2xl rounded-xl z-50 border border-gray-200 min-w-48 overflow-hidden">
+                                 <!-- Menu déroulant -->
+                 <li class="relative group" x-data="{ federationMenuOpen: false, federationMenuTimeout: null }" 
+                     @mouseenter="clearTimeout(federationMenuTimeout); federationMenuOpen = true" 
+                     @mouseleave="federationMenuTimeout = setTimeout(() => federationMenuOpen = false, 150)">
+                     <button class="flex items-center gap-2 hover:text-primary focus:outline-none transition-colors duration-300 hover:scale-105 transform">
+                         La Fédération
+                         <i class="fas fa-chevron-down text-sm transition-transform duration-300" 
+                            :class="{ 'rotate-180': federationMenuOpen }"></i>
+                     </button>
+                     
+                     <div x-show="federationMenuOpen"
+                          @mouseenter="clearTimeout(federationMenuTimeout)"
+                          @mouseleave="federationMenuTimeout = setTimeout(() => federationMenuOpen = false, 150)"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform -translate-y-4 scale-95"
+                          x-transition:enter-end="opacity-100 transform translate-y-0 scale-100"
+                          x-transition:leave="transition ease-in duration-200"
+                          x-transition:leave-start="opacity-100 transform translate-y-0 scale-100"
+                          x-transition:leave-end="opacity-0 transform -translate-y-4 scale-95"
+                          class="absolute bg-white mt-3 shadow-2xl rounded-xl z-50 border border-gray-200 min-w-48 overflow-hidden backdrop-blur-sm bg-white/95">
+                        
                         <div class="py-2">
-                            <a href="/federation/mission" class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
+                            <a href="/federation#mission" 
+                               class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
                                 <i class="fas fa-bullseye mr-3 text-primary group-hover/item:text-white transition-colors duration-300"></i>
                                 <span>Mission</span>
                             </a>
-                            <a href="/federation/bureau" class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
+                            
+                            <a href="/federation#bureau" 
+                               class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
                                 <i class="fas fa-users mr-3 text-primary group-hover/item:text-white transition-colors duration-300"></i>
                                 <span>Le Bureau</span>
                             </a>
-                            <a href="/disciplines" class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
+                            
+                            <a href="/federation#disciplines" 
+                               class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
                                 <i class="fas fa-water mr-3 text-primary group-hover/item:text-white transition-colors duration-300"></i>
                                 <span>Disciplines associées</span>
                             </a>
-                            <a href="/clubs" class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
+                            
+                            <a href="/federation#clubs" 
+                               class="flex items-center px-6 py-3 hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white transition-all duration-300 group/item">
                                 <i class="fas fa-trophy mr-3 text-primary group-hover/item:text-white transition-colors duration-300"></i>
                                 <span>Clubs affiliés</span>
                             </a>
                         </div>
                     </div>
                 </li>
+
 
                 <li><a href="/actualites" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Actualités</a></li>
                 <li><a href="/galerie" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Galerie</a></li>
@@ -90,22 +113,22 @@
                     <i class="fas fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                 </summary>
                 <div class="pl-4 space-y-2 mt-2 bg-gray-50 rounded-lg p-3">
-                    <a href="/federation/mission" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
-                        <i class="fas fa-bullseye mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
-                        <span>Mission</span>
-                    </a>
-                    <a href="/federation/bureau" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
-                        <i class="fas fa-users mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
-                        <span>Le Bureau</span>
-                    </a>
-                    <a href="/disciplines" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
-                        <i class="fas fa-water mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
-                        <span>Disciplines associées</span>
-                    </a>
-                    <a href="/clubs" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
-                        <i class="fas fa-trophy mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
-                        <span>Clubs affiliés</span>
-                    </a>
+                                         <a href="/federation#mission" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
+                         <i class="fas fa-bullseye mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
+                         <span>Mission</span>
+                     </a>
+                     <a href="/federation#bureau" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
+                         <i class="fas fa-users mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
+                         <span>Le Bureau</span>
+                     </a>
+                     <a href="/federation#disciplines" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
+                         <i class="fas fa-water mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
+                         <span>Disciplines associées</span>
+                     </a>
+                     <a href="/federation#clubs" class="flex items-center py-2 px-4 hover:text-primary hover:bg-white rounded-lg transition-all duration-300 group/item">
+                         <i class="fas fa-trophy mr-3 text-primary group-hover/item:scale-110 transition-transform duration-300"></i>
+                         <span>Clubs affiliés</span>
+                     </a>
                 </div>
             </details>
             <a href="/actualites" class="block py-3 px-4 hover:text-primary hover:bg-gray-50 rounded-lg transition-all duration-300 text-base font-medium">Actualités</a>
@@ -139,7 +162,7 @@
                     <div class="space-y-3">
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-primary mt-1"></i>
-                            <p class="text-gray-300 hover:text-white transition-colors duration-300">Siège social: Agbodrafo , Togo</p>
+                            <p class="text-gray-300 hover:text-white transition-colors duration-300">Siège social: Agbodrafo, Togo</p>
                         </div>
                         <div class="flex items-center space-x-3">
                             <i class="fas fa-envelope text-primary"></i>
@@ -147,7 +170,18 @@
                         </div>
                         <div class="flex items-center space-x-3">
                             <i class="fas fa-phone text-primary"></i>
-                            <a href="tel:+22890000000" class="text-gray-300 hover:text-white transition-colors duration-300">(+228) 90 20 27 12 / 90 29 28 29</a>
+                            <a href="tel:+22890202712" class="text-gray-300 hover:text-white transition-colors duration-300">(+228) 90 20 27 12</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <a href="tel:+22890292829" class="text-gray-300 hover:text-white transition-colors duration-300">(+228) 90 29 28 29</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-clock text-primary mt-1"></i>
+                            <div class="text-gray-300">
+                                <p class="hover:text-white transition-colors duration-300">Lun-Ven: 8h00-17h00</p>
+                                <p class="hover:text-white transition-colors duration-300">Sam: 9h00-12h00</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -162,8 +196,8 @@
                     </div>
                     <ul class="space-y-3">
                         <li><a href="/" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Accueil</span></a></li>
-                        <li><a href="/federation/mission" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>La Fédération</span></a></li>
-                        <li><a href="/clubs" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Clubs affiliés</span></a></li>
+                                                 <li><a href="/federation#mission" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>La Fédération</span></a></li>
+                         <li><a href="/federation#clubs" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Clubs affiliés</span></a></li>
                         <li><a href="/actualites" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Actualités</span></a></li>
                         <li><a href="/galerie" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Galerie</span></a></li>
                         <li><a href="/contact" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Contact</span></a></li>
@@ -179,9 +213,9 @@
                         <h4 class="text-xl font-bold text-primary">Disciplines</h4>
                     </div>
                     <ul class="space-y-3">
-                        <li><a href="/disciplines/canoe" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Canoë</span></a></li>
-                        <li><a href="/disciplines/kayak" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Kayak</span></a></li>
-                        <li><a href="/disciplines/associees" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Disciplines associées</span></a></li>
+                                                 <li><a href="/federation#disciplines" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Canoë</span></a></li>
+                         <li><a href="/federation#disciplines" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Kayak</span></a></li>
+                         <li><a href="/federation#disciplines" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Disciplines associées</span></a></li>
                     </ul>
                 </div>
 

@@ -3,29 +3,30 @@
 @section('title', 'Contact - FETOC')
 
 @section('content')
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Contactez la FETOC</h1>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto mb-6">
-                La Fédération Togolaise de Canoë-Kayak est à votre disposition pour toutes vos questions, 
-                inscriptions aux clubs, informations sur les compétitions et formations.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 text-sm">
-                <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <i class="fas fa-users mr-2"></i>Plus de 500 membres
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <i class="fas fa-trophy mr-2"></i>15 clubs affiliés
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <i class="fas fa-medal mr-2"></i>Compétitions nationales
+    <div class="min-h-screen flex flex-col">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Contactez la FETOC</h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto mb-6">
+                    La Fédération Togolaise de Canoë-Kayak est à votre disposition pour toutes vos questions, 
+                    inscriptions aux clubs, informations sur les compétitions et formations.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-users mr-2"></i>Plus de 500 membres
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-trophy mr-2"></i>15 clubs affiliés
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-medal mr-2"></i>Compétitions nationales
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <main class="container mx-auto px-6 py-16">
+        <main class="container mx-auto px-6 py-16 flex-grow">
         <!-- FAQ Section -->
         <div class="mb-16 bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border border-gray-100">
             <!-- Titre avec traits décoratifs -->
@@ -101,10 +102,10 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-1 gap-12">
             
             <!-- Formulaire de contact -->
-            <div class="bg-white p-8 rounded-2xl shadow-xl">
+            <div class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl mx-auto">
                 <!-- Titre avec traits décoratifs -->
                 <div class="text-center mb-8">
                     <div class="flex items-center justify-center mb-4">
@@ -176,86 +177,28 @@
                     </button>
                 </form>
             </div>
-
-            <!-- Informations de contact -->
-            <div class="space-y-8">
-                <!-- Coordonnées -->
-                <div class="bg-white p-8 rounded-2xl shadow-xl">
-                    <!-- Titre avec traits décoratifs -->
-                    <div class="text-center mb-8">
-                        <div class="flex items-center justify-center mb-4">
-                            <div class="w-16 h-0.5 bg-yellow-400"></div>
-                            <span class="mx-4 text-primary font-semibold uppercase tracking-wider">Coordonnées</span>
-                            <div class="w-16 h-0.5 bg-yellow-400"></div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Nos coordonnées</h3>
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Adresse du siège</h4>
-                                <p class="text-gray-600">123 Rue de la Fédération<br>Quartier Administratif<br>Lomé, Togo</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Téléphone</h4>
-                                <a href="tel:+22890000000" class="text-gray-600 hover:text-primary transition-colors duration-300">
-                                    +228 90 00 00 00
-                                </a><br>
-                                <a href="tel:+22890000001" class="text-gray-600 hover:text-primary transition-colors duration-300">
-                                    +228 90 00 00 01 (Urgences)
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
-                                <a href="mailto:contact@fetoc.tg" class="text-gray-600 hover:text-primary transition-colors duration-300">
-                                    contact@fetoc.tg
-                                </a><br>
-                                <a href="mailto:info@fetoc.tg" class="text-gray-600 hover:text-primary transition-colors duration-300">
-                                    info@fetoc.tg
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-900 mb-1">Horaires d'ouverture</h4>
-                                <p class="text-gray-600">
-                                    <strong>Lundi - Vendredi :</strong> 8h00 - 17h00<br>
-                                    <strong>Samedi :</strong> 9h00 - 12h00<br>
-                                    <strong>Dimanche :</strong> Fermé<br>
-                                    <em class="text-sm">Fermé les jours fériés</em>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
         </div>
 
 
 
         <!-- Carte interactive -->
-        
+        <div class="mt-16 bg-white p-8 rounded-2xl shadow-xl">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Notre localisation</h3>
+            <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7633.277877686897!2d1.4844777364616484!3d6.20922230264489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sfr!2stg!4v1754394173496!5m2!1sfr!2stg" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-500">123 Rue de la Fédération, Quartier Administratif, Lomé, Togo</p>
+            </div>
+        </div>
+        </main>
+    </div>
 @endsection

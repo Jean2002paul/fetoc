@@ -5,6 +5,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
- route::get('/contact', function () {
+
+Route::get('/contact', function () {
     return view('contact');
- });
+});
+
+Route::get('/federation', function () {
+    return view('federation');
+});
+
+ 
