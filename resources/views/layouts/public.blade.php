@@ -1,0 +1,46 @@
+{{-- resources/views/layouts/public.blade.php --}}
+
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@yield('title', 'FETOC - Fédération Togolaise de Canoë-Kayak')</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    
+    <style>
+        :root {
+            --color-primary: #10B981;
+            --color-secondary: #059669;
+            --color-dark: #1F2937;
+            --color-light: #F9FAFB;
+        }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); }
+        .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
+        .hover\:text-secondary:hover { color: var(--color-secondary); }
+        .group:hover .group-hover\:block { display: block; }
+    </style>
+    @stack('styles')
+</head>
+<body class="bg-light font-sans text-gray-800 leading-relaxed">
+
+    <!-- On appelle le composant Header -->
+    <x-public.header />
+
+    <!-- Contenu de la page -->
+    <main class="@if(request()->is('/')) p-0 @else py-10 px-4 container mx-auto @endif">
+        @yield('content')
+    </main>
+
+    <!-- On appelle le composant Footer -->
+    <x-public.footer />
+
+</body>
+</html>

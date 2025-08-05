@@ -1,48 +1,57 @@
 <!DOCTYPE html>
-<html lang="fr">
+{{--
+    On ajoute la classe 'dark' à la balise <html> si 'isDarkMode' est vrai.
+    C'est ce qui active le mode sombre de Tailwind.
+--}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="layout()" :class="{ 'dark': isDarkMode }">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'FETOC - Fédération Togolaise de Canoë-Kayak')</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <meta charset="utf--8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
-    
+    <title>{{ config('app.name', 'Laravel') }} - Admin</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome (pour les icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Scripts et Styles via Vite -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <style>
-        :root {
-            --color-primary: #10B981;
-            --color-secondary: #059669;
-            --color-dark: #1F2937;
-            --color-light: #F9FAFB;
+        .sidebar-link-active {
+            background-color: #10B981; /* var(--color-primary) */
+            color: white;
         }
-        .bg-primary { background-color: var(--color-primary); }
-        .text-primary { color: var(--color-primary); }
-        .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
-        .hover\:text-secondary:hover { color: var(--color-secondary); }
-        .group:hover .group-hover\:block {
-            display: block;
+        .sidebar-link-active:hover {
+            background-color: #059669; /* var(--color-secondary) */
+        }
+        .sidebar-link-active i {
+            color: white;
         }
     </style>
 </head>
-<body class="bg-light font-sans text-gray-800 leading-relaxed">
-
-    <!-- Header -->
-    <header class="bg-white shadow-md py-4 relative z-10">
-        <nav class="container mx-auto px-4 flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-3">
-                <img src="{{ asset('assets/logo_fetoc.png') }}" alt="Logo FETOC" class="h-10 w-20 object-cover" />
-                <span class="hidden md:inline text-xl font-bold text-gray-900">Fédération Togolaise de Canoë-Kayak</span>
-            </a>
-
-            <!-- Desktop Menu -->
-            <ul class="hidden md:flex space-x-8 text-base font-semibold">
-                <li><a href="/" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Accueil</a></li>
+<body class="font-sans antialiased">
+    
+    <div class="flex h-screen bg-gray-100 dark:bg-gray-900">
+        
+        <!-- Sidebar -->
+        <aside 
+            class="fixed inset-y-0 left-0 z-30 flex flex-col w-64 px-4 py-8 overflow-y-auto bg-white border-r dark:bg-gray-800 dark:border-gray-700 transform md:relative md:translate-x-0 transition-transform duration-300 ease-in-out"
+            :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}"
+        >
+            <!-- Logo et nom de l'app -->
+            <div class="flex items-center justify-between shrink-0 mb-10">
+                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3">
+                    {{-- LOGO PERSONNALISÉ --}}
+                    <img src="{{ asset('assets/logo_fetoc.png') }}" alt="Logo FETOC" class="h-9 w-auto" />
+                    <span class="text-xl font-semibold text-gray-800 dark:text-gray-200">FETOC Admin</span>
+                </a>
                 
+<<<<<<< HEAD
                                  <!-- Menu déroulant -->
                  <li class="relative group" x-data="{ federationMenuOpen: false, federationMenuTimeout: null }" 
                      @mouseenter="clearTimeout(federationMenuTimeout); federationMenuOpen = true" 
@@ -97,13 +106,35 @@
                 <li><a href="/galerie" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Galerie</a></li>
                 <li><a href="/contact" class="hover:text-primary transition-colors duration-300 hover:scale-105 transform">Contact</a></li>
             </ul>
+=======
+                {{-- Bouton pour fermer la sidebar sur mobile --}}
+                <button @click="sidebarOpen = false" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
 
-            <!-- Mobile Hamburger -->
-            <button id="mobile-menu-button" class="md:hidden text-xl">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
+            <!-- Liens de navigation (avec scroll si nécessaire) -->
+            <nav class="flex-1 space-y-2">
+                <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 {{ request()->routeIs('dashboard') ? 'sidebar-link-active' : '' }}">
+                    <i class="fas fa-tachometer-alt w-5 h-5 mr-3 text-gray-500 dark:text-gray-400"></i>
+                    <span>Tableau de bord</span>
+                </a>
+                <a href="{{ route('admin.articles.index') }}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 {{ request()->routeIs('articles.*') ? 'sidebar-link-active' : '' }}">
+                    <i class="fas fa-newspaper w-5 h-5 mr-3 text-gray-500 dark:text-gray-400"></i>
+                    <span>Articles</span>
+                </a>
+>>>>>>> 4e1a408 (CRUD)
 
+                <a href="{{ route('admin.clubs.index') }}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 {{ request()->routeIs('admin.clubs.*') ? 'sidebar-link-active' : '' }}">
+                    <i class="fas fa-shield-alt w-5 h-5 mr-3 text-gray-500 dark:text-gray-400"></i>
+                    <span>Clubs Affiliés</span>
+                </a>
+                <a href="#" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 {{ request()->routeIs('users.*') ? 'sidebar-link-active' : '' }}">
+                    <i class="fas fa-users w-5 h-5 mr-3 text-gray-500 dark:text-gray-400"></i>
+                    <span>Utilisateurs</span>
+                </a>
+
+<<<<<<< HEAD
         <!-- Menu mobile -->
         <div id="mobile-menu" class="hidden md:hidden mt-4 px-4 space-y-3">
             <a href="/" class="block py-3 px-4 hover:text-primary hover:bg-gray-50 rounded-lg transition-all duration-300 text-base font-medium">Accueil</a>
@@ -253,42 +284,61 @@
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Copyright -->
-        <div class="border-t border-gray-700 bg-gray-800">
-            <div class="container mx-auto px-6 py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <div class="text-gray-400 text-sm">
-                        &copy; {{ now()->year }} FETOC - Tous droits réservés.
-                    </div>
-                    <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
-                        <div class="flex space-x-6">
-                            <a href="/mentions-legales" class="text-gray-400 hover:text-primary transition-colors duration-300">Mentions légales</a>
-                            <a href="/politique-confidentialite" class="text-gray-400 hover:text-primary transition-colors duration-300">Politique de confidentialité</a>
-                            <a href="/conditions-utilisation" class="text-gray-400 hover:text-primary transition-colors duration-300">Conditions d'utilisation</a>
-                        </div>
-                        <div class="flex items-center space-x-2 text-gray-500">
-                            <span>Conçu par</span>
-                            <a href="https://jean2002paul.github.io/Portfolio-jean-paul/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-semibold transition-colors duration-300 flex items-center space-x-1 cursor-pointer hover:scale-105 transform">
-                                <span>Louis ZIALENGOR</span>
-                                <i class="fas fa-external-link-alt text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+=======
+                <a href="{{ route('profile.edit') }}" class="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 {{ request()->routeIs('profile.edit') ? 'sidebar-link-active' : '' }}">
+                    <i class="fas fa-user-cog w-5 h-5 mr-3 text-gray-500 dark:text-gray-400"></i>
+                    <span>Mon Profil</span>
+                </a>
+            </nav>
 
-    <!-- Script mobile -->
-    <script>
-        document.getElementById('mobile-menu-button')?.addEventListener('click', () => {
-            document.getElementById('mobile-menu')?.classList.toggle('hidden');
-        });
-    </script>
+            <!-- Section utilisateur en bas de la sidebar -->
+            <div class="shrink-0">
+                <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <img class="h-8 w-8 rounded-full object-cover" src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=10B981&color=fff" alt="Avatar">
+                        <span class="font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</span>
+>>>>>>> 4e1a408 (CRUD)
+                    </div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" title="Se déconnecter" class="text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200">
+                            <i class="fas fa-sign-out-alt fa-lg"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Fond semi-transparent pour mobile -->
+        <div x-show="sidebarOpen" @click="sidebarOpen = false" class="fixed inset-0 z-20 bg-black/50 transition-opacity md:hidden"></div>
+
+        <!-- Contenu principal -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header du contenu principal (STICKY) -->
+            <header class="sticky top-0 z-20 flex items-center justify-between p-4 bg-white/80 dark:bg-gray-800/80 border-b dark:border-gray-700 backdrop-blur-sm">
+                <!-- Bouton hamburger pour mobile -->
+                <button @click.stop="sidebarOpen = !sidebarOpen" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+
+                <!-- Titre de la page (slot $header) -->
+                <div class="hidden md:block text-xl font-semibold text-gray-800 dark:text-gray-200">
+                    @if (isset($header))
+                        {{ $header }}
+                    @endif
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center space-x-4 ml-auto">
+                    <x-dark-mode-toggle />
+                </div>
+            </header>
+
+            <!-- Contenu de la page (avec scroll) -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                {{ $slot }}
+            </main>
+        </div>
+    </div>
 </body>
 </html>
