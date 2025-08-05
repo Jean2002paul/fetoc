@@ -47,7 +47,7 @@
                     Bienvenue à la Fédération Togolaise de Canoë-Kayak
                 </h1>
                 <p class="text-lg sm:text-xl md:text-2xl mb-8 drop-shadow-md">
-                    Promouvoir le canoë-kayak et les disciplines associées au Togo.
+                    
                 </p>
                 <a href="/actualites" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
                     Découvrir nos actualités
@@ -74,13 +74,68 @@
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Section Présentation de la mission -->
-        <section class="mb-16 text-center bg-white p-8 rounded-xl shadow-lg">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6">Notre Mission</h2>
-            <p class="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                La Fédération Togolaise de Canoë-Kayak et Disciplines Associées (FETOC) a pour mission de développer la pratique de ces sports passionnants à travers le Togo. Nous nous engageons à organiser des compétitions équitables, à offrir des programmes de formation de qualité pour nos jeunes athlètes et à représenter fièrement le Togo sur la scène sportive internationale. Notre objectif est de cultiver le talent, l'esprit sportif et la passion pour le canoë-kayak.
-            </p>
+        <section class="mb-16 bg-gradient-to-br from-white to-gray-50 p-12 rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30"></div>
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-full translate-y-12 -translate-x-12"></div>
+            
+            <div class="relative z-10 text-center">
+                <!-- Titre avec traits décoratifs -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-16 h-0.5 bg-yellow-400"></div>
+                        <span class="mx-4 text-primary font-semibold uppercase tracking-wider">Mission</span>
+                        <div class="w-16 h-0.5 bg-yellow-400"></div>
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900">Notre Mission</h2>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl text-gray-700 leading-relaxed mb-8">
+                        La Fédération Togolaise de Canoë-Kayak et Disciplines Associées (FETOC) a pour mission de développer la pratique de ces sports passionnants à travers le Togo.
+                    </p>
+                    
+                    <!-- Points clés de la mission -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-trophy text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Compétitions Équitables</h3>
+                            <p class="text-gray-600">
+                                Organiser des compétitions de haut niveau avec des règles équitables pour tous les participants.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Formation de Qualité</h3>
+                            <p class="text-gray-600">
+                                Offrir des programmes de formation excellents pour développer nos jeunes athlètes.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-flag text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Représentation Internationale</h3>
+                            <p class="text-gray-600">
+                                Représenter fièrement le Togo sur la scène sportive internationale.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <p class="text-lg text-gray-700 italic">
+                            Notre objectif est de cultiver le talent, l'esprit sportif et la passion pour le canoë-kayak.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
-
-       
     </main>
 @endsection
