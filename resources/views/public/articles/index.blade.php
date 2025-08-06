@@ -1,4 +1,3 @@
-{{-- resources/views/public/articles/index.blade.php --}}
 
 @extends('layouts.public')
 

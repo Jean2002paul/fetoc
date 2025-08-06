@@ -29,8 +29,7 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-light font-sans text-gray-800 leading-relaxed">
-
+<body class="bg-light font-sans text-gray-800 leading-relaxed pt-20">
     <!-- On appelle le composant Header -->
     <x-public.header />
 
@@ -41,6 +40,8 @@
 
     <!-- On appelle le composant Footer -->
     <x-public.footer />
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/spotlight.js@0.7.8/dist/spotlight.bundle.min.js" defer></script>
+    @stack('scripts')
 </body>
 </html>

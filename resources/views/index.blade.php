@@ -3,7 +3,6 @@
 @section('title', 'Accueil - FETOC')
 
 @section('content')
-    <!-- Hero avec Carrousel Pleine Page -->
     <section class="relative w-full h-screen overflow-hidden">
         <div x-data="{ heroActiveSlide: 1, heroSlides: [
             {
