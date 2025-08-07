@@ -1,15 +1,50 @@
 <x-app-layout>
     {{-- Le header de la page --}}
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Gestion des Clubs') }}
-            </h2>
-            {{-- Le bouton pour créer un nouveau club --}}
-            <a href="{{ route('admin.clubs.create') }}" 
-               class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md font-semibold text-sm shadow-md transition-colors duration-200">
-                <i class="fas fa-plus mr-2"></i> Ajouter un Club
-            </a>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                
+                {{-- GAUCHE : Fil d'Ariane et Titre --}}
+                <div>
+                    <!-- Breadcrumbs -->
+                    <nav class="text-sm font-medium mb-2" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                            <li class="inline-flex items-center">
+                                <a href="{{ route('dashboard') }}" class="inline-flex items-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+                                    <i class="fas fa-home mr-2"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li aria-current="page">
+                                <div class="flex items-center">
+                                    <i class="fas fa-chevron-right fa-xs text-gray-400 mx-2"></i>
+                                    <span class="font-semibold text-gray-700 dark:text-gray-200">Clubs Affiliés </span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                    
+                    <!-- Titre principal -->
+                    <h2 class="font-bold text-2xl text-gray-900 dark:text-white leading-tight">
+                        {{ __('Clubs Affiliés') }}
+                    </h2>
+                </div>
+                
+                {{-- DROITE : Barre d'outils avec Recherche et Bouton d'action --}}
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                        <input type="text" name="search" id="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm" placeholder="Rechercher un club...">
+                    </div>
+
+                    <!-- Bouton de création -->
+                    <a href="{{ route('admin.clubs.create') }}" 
+                    class="inline-flex items-center justify-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-semibold text-sm shadow-md transform transition-all duration-300 hover:scale-105 shrink-0">
+                        <i class="fas fa-plus mr-2"></i> Ajouter un Clubs
+                    </a>
+                </div>
+            
         </div>
     </x-slot>
 
