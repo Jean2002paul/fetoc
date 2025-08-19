@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex flex-col">
         <!-- Hero Section -->
-        <section class="bg-gradient-to-br from-primary to-secondary text-white py-20">
+        <section class="bg-gradient-to-br from-emerald-500 to-emerald-700 text-white py-20">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">Notre Mission</h1>
                 <p class="text-xl md:text-2xl opacity-90 max-w-4xl mx-auto">

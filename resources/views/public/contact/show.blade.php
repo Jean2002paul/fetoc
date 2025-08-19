@@ -21,92 +21,111 @@
         </section>
 
         <main class="container mx-auto px-6 py-16 flex-grow">
-            
-            <!-- Formulaire de contact -->
-            <div id="contact-form" class="bg-white p-8 rounded-2xl shadow-xl max-w-2xl mx-auto mb-16">
-                <div class="text-center mb-8">
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="w-16 h-0.5 bg-yellow-400"></div>
-                        <span class="mx-4 text-primary font-semibold uppercase tracking-wider">Contact</span>
-                        <div class="w-16 h-0.5 bg-yellow-400"></div>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-900">Envoyez-nous un message</h2>
-                </div>
-                
-                {{-- Message de succès --}}
-                @if(session('success'))
-                    <div class="mb-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md" role="alert">
-                        <p class="font-bold">Message envoyé !</p>
-                        <p>{{ session('success') }}</p>
-                    </div>
-                @endif
-                
-                {{-- Affichage des erreurs de validation --}}
-                @if ($errors->any())
-                    <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                        <strong class="font-bold">Oups!</strong>
-                        <ul class="mt-2 list-disc list-inside text-sm">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-                    @csrf
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nom complet *</label>
-                            <input type="text" id="name" name="name" value="{{ old('name') }}" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                                   placeholder="Votre nom complet">
+            <!-- Bloc principal Contact + FAQ -->
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-blue-50 via-purple-50 to-white/80 border border-blue-200 shadow-2xl rounded-3xl p-10 mb-16 backdrop-blur-md">
+                <!-- Formulaire de contact -->
+                <div id="contact-form" class="mb-12">
+                    <div class="text-center mb-8">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="w-16 h-0.5 bg-yellow-400"></div>
+                            <span class="mx-4 text-primary font-semibold uppercase tracking-wider">Contact</span>
+                            <div class="w-16 h-0.5 bg-yellow-400"></div>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                            <input type="email" id="email" name="email" value="{{ old('email') }}" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                                   placeholder="votre@email.com">
+                        <h2 class="text-3xl font-bold text-gray-900">Envoyez-nous un message</h2>
+                    </div>
+                    
+                    {{-- Message de succès --}}
+                    @if(session('success'))
+                        <div class="mb-6 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md" role="alert">
+                            <p class="font-bold">Message envoyé !</p>
+                            <p>{{ session('success') }}</p>
                         </div>
-                    </div>
+                    @endif
                     
-                    <div>
-                        <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Sujet *</label>
-                        <input type="text" id="subject" name="subject" value="{{ old('subject') }}" required 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                               placeholder="Sujet de votre message">
-                    </div>
-                    
-                    <div>
-                        <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
-                        <textarea id="message" name="message" rows="6" required 
-                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
-                                  placeholder="Décrivez votre demande en détail...">{{ old('message') }}</textarea>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
-                        <i class="fas fa-paper-plane mr-2"></i>
-                        Envoyer le message
-                    </button>
-                </form>
-            </div>
+                    {{-- Affichage des erreurs de validation --}}
+                    @if ($errors->any())
+                        <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Oups!</strong>
+                            <ul class="mt-2 list-disc list-inside text-sm">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-            <!-- FAQ Section -->
-            <div class="mb-16 bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border border-gray-100">
-                <div class="text-center mb-8">
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="w-16 h-0.5 bg-yellow-400"></div><span class="mx-4 text-primary font-semibold uppercase tracking-wider">FAQ</span><div class="w-16 h-0.5 bg-yellow-400"></div>
-                    </div>
-                    <h2 class="text-3xl font-bold text-gray-900">Ce que vous devez savoir</h2>
+                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
+                        @csrf
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nom complet *</label>
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/90"
+                                       placeholder="Votre nom complet">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/90"
+                                       placeholder="votre@email.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Sujet *</label>
+                            <input type="text" id="subject" name="subject" value="{{ old('subject') }}" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/90"
+                                   placeholder="Sujet de votre message">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="6" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none bg-white/90"
+                                      placeholder="Décrivez votre demande en détail...">{{ old('message') }}</textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
                 </div>
-                <div class="max-w-3xl mx-auto space-y-4">
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Comment s'inscrire ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Contactez un club ou utilisez notre formulaire. Nous vous orienterons vers le club le plus proche.</p></details>
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Documents requis ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Pièce d'identité, certificat médical, fiche d'inscription et frais d'adhésion.</p></details>
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Compétitions débutants ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Oui, nous organisons des compétitions pour tous les niveaux et des stages d'initiation.</p></details>
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Licence fédérale ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Délivrée par votre club d'affiliation. Permet de participer aux compétitions officielles.</p></details>
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Équipement nécessaire ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Gilet de sauvetage, pagaie, kayak/canoë. Les clubs fournissent l'équipement de base.</p></details>
-                    <details class="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"><summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between"><span>Stages de formation ?</span><i class="fas fa-chevron-down group-open:rotate-180 transition-transform duration-300 text-primary"></i></summary><p class="mt-4 text-gray-600">Oui, stages réguliers pour tous niveaux, encadrés par des entraîneurs diplômés.</p></details>
+
+                <!-- FAQ Section -->
+                <div>
+                    <div class="text-center mb-8">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="w-16 h-0.5 bg-yellow-400"></div>
+                            <span class="mx-4 text-primary font-semibold uppercase tracking-wider">FAQ</span>
+                            <div class="w-16 h-0.5 bg-yellow-400"></div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-900">Ce que vous devez savoir</h2>
+                    </div>
+                    <div class="max-w-3xl mx-auto space-y-4">
+                        @php
+                            $faqs = [
+                                ["question" => "Comment s'inscrire ?", "answer" => "Contactez un club ou utilisez notre formulaire. Nous vous orienterons vers le club le plus proche."],
+                                ["question" => "Documents requis ?", "answer" => "Pièce d'identité, certificat médical, fiche d'inscription et frais d'adhésion."],
+                                ["question" => "Compétitions débutants ?", "answer" => "Oui, nous organisons des compétitions pour tous les niveaux et des stages d'initiation."],
+                                ["question" => "Licence fédérale ?", "answer" => "Délivrée par votre club d'affiliation. Permet de participer aux compétitions officielles."],
+                                ["question" => "Équipement nécessaire ?", "answer" => "Gilet de sauvetage, pagaie, kayak/canoë. Les clubs fournissent l'équipement de base."],
+                                ["question" => "Stages de formation ?", "answer" => "Oui, stages réguliers pour tous niveaux, encadrés par des entraîneurs diplômés."],
+                            ];
+                        @endphp
+                        @foreach($faqs as $faq)
+                        <details class="group bg-white/80 rounded-2xl p-6 border-l-4 border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300">
+                            <summary class="cursor-pointer font-semibold text-gray-900 hover:text-primary transition-colors duration-300 text-lg flex items-center justify-between">
+                                <span>{{ $faq['question'] }}</span>
+                                <svg class="ml-2 w-5 h-5 text-blue-400 group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </summary>
+                            <p class="mt-4 text-gray-700">{{ $faq['answer'] }}</p>
+                        </details>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 

@@ -71,6 +71,51 @@
         </div>
     </section>
 
+    <!-- Section Mot du Président -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <!-- Photo du Président -->
+                    <div class="md:w-1/3 relative">
+                        <img src="{{ asset('assets/testi2.jpg') }}" alt="Président de la Fédération Togolaise de Canoë-Kayak" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-2xl font-bold">Jean SIMEDO</h3>
+                                <p class="text-yellow-300">Président de la FETOC</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message du Président -->
+                    <div class="md:w-2/3 p-8 md:p-12">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-1 bg-yellow-500 mr-4"></div>
+                            <h2 class="text-3xl font-bold text-gray-900">Mot du Président</h2>
+                        </div>
+                        
+                        <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 italic">
+                            <p class="mb-4">« C'est avec un immense plaisir que je vous accueille sur le site officiel de la Fédération Togolaise de Canoë-Kayak. Notre fédération s'engage à promouvoir et développer la pratique du canoë-kayak au Togo, en mettant l'accent sur l'excellence sportive, l'éthique et le développement durable. »</p>
+                            
+                            <p class="mb-4">« Nous œuvrons chaque jour pour offrir à nos athlètes les meilleures conditions d'entraînement et de compétition, tout en favorisant l'accès à ce magnifique sport pour tous les Togolais, quel que soit leur âge ou leur niveau. »</p>
+                            
+                            <p>« Rejoignez-nous dans cette belle aventure et découvrez les joies du canoë-kayak, un sport qui allie force, technique et communion avec la nature. »</p>
+                        </blockquote>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-500">Ensemble, naviguons vers l'excellence !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Section Présentation de la mission -->
         <section class="mb-16 bg-gradient-to-br from-white to-gray-50 p-12 rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden">
@@ -122,7 +167,7 @@
                                 <i class="fas fa-flag text-white text-2xl"></i>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-3">Représentation Internationale</h3>
-                            <p class="text-gray-600">
+                            <p class="text-gray-600">  
                                 Représenter fièrement le Togo sur la scène sportive internationale.
                             </p>
                         </div>
@@ -138,3 +183,4 @@
         </section>
     </main>
 @endsection
+

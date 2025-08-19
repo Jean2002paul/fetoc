@@ -35,8 +35,6 @@
                 <ul class="space-y-3">
                     <li><a href="/disciplines/canoe" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Canoë</span></a></li>
                     <li><a href="/disciplines/kayak" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Kayak</span></a></li>
-                    <li><a href="/disciplines/associees" class="text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300 flex items-center space-x-2"><i class="fas fa-chevron-right text-primary text-xs"></i><span>Disciplines associées</span></a></li>
-                </ul>
             </div>
 
             <!-- Réseaux sociaux -->

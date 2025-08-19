@@ -1,0 +1,99 @@
+/* Custom styles for mobile responsiveness */
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better touch targets for mobile */
+a, button, [role="button"], input, textarea, select {
+    touch-action: manipulation;
+}
+
+/* Improve button tap targets on mobile */
+button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Better form controls on mobile */
+input, textarea, select {
+    font-size: 16px; /* Prevents zoom on focus in iOS */
+}
+
+/* Hide scrollbar when menu is closed for better performance */
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Add some space at the bottom of the page for mobile browsers with bottom nav */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    body {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Improve text readability on mobile */
+p, li, a, span, div, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Better image handling */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Hide Alpine.js elements until they're loaded */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Better focus styles for accessibility */
+:focus {
+    outline: 3px solid rgba(16, 185, 129, 0.5);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Print styles */
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+    
+    body {
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
