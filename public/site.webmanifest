@@ -1,0 +1,31 @@
+{
+  "name": "FETOC - Fédération Togolaise de Canoë-Kayak",
+  "short_name": "FETOC",
+  "description": "Site officiel de la Fédération Togolaise de Canoë-Kayak",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#10B981",
+  "theme_color": "#10B981",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/vrai_logo_fetoc.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/vrai_logo_fetoc.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/vrai_logo_fetoc.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

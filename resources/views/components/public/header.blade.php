@@ -10,7 +10,7 @@
     <nav class="container mx-auto px-4 flex justify-between items-center">
         {{-- LOGO --}}
         <a href="/" class="flex items-center space-x-2 sm:space-x-3">
-            <img src="{{ asset('assets/logo_fetoc.png') }}" alt="Logo FETOC" class="h-16 sm:h-20 w-auto object-contain" />
+            <img src="{{ asset('assets/vrai_logo_fetoc.png') }}" alt="Logo FETOC" class="h-16 sm:h-20 w-auto object-contain" />
             <span class="hidden sm:inline text-lg sm:text-xl font-bold text-gray-900">
                 Féderation Togolaise de Canoë-Kayak
             </span>

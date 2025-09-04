@@ -23,6 +23,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Route de test pour vérifier l'accès à l'image
+Route::get('/test-logo', function() {
+    return response()->file(public_path('assets/vrai_logo_fetoc.png'));
+});
+
 Route::get('/clubs', [PublicClubController::class, 'index'])->name('clubs.index');
 Route::get('/actualites', [PublicArticleController::class, 'index'])->name('articles.index');
 Route::get('/actualites/{slug}', [PublicArticleController::class, 'show'])->name('articles.show');

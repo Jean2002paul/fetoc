@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square70x70logo src="/assets/vrai_logo_fetoc.png"/>
+            <square150x150logo src="/assets/vrai_logo_fetoc.png"/>
+            <square310x310logo src="/assets/vrai_logo_fetoc.png"/>
+            <TileColor>#10B981</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>

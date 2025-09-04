@@ -8,11 +8,19 @@
     <title>{{ config('app.name', 'Laravel') }} - Admin</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('logo_fetoc.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/logo_fetoc.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/logo_fetoc.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/logo_fetoc.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/vrai_logo_fetoc.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/vrai_logo_fetoc.png') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/vrai_logo_fetoc.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/vrai_logo_fetoc.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/vrai_logo_fetoc.png') }}">
+    
+    <!-- Meta Tags pour le SEO -->
+    <meta name="description" content="FETOC - Fédération des Étudiants de l'Université de Thiès. Découvrez nos activités, actualités et services pour les étudiants.">
+    <meta property="og:image" content="{{ asset('assets/vrai_logo_fetoc.png') }}">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta name="twitter:image" content="{{ asset('assets/vrai_logo_fetoc.png') }}">
+    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
